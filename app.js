@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const data = require("./data.json")
+const config = require("./config")
 
 mongoose.connect( config.mongoURL, { useNewUrlParser: true })
 .catch(err =>{

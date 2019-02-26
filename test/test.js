@@ -1,17 +1,21 @@
-const app = require("./../app");
-const chai = require("chai");
-const chaiHttp = require("chai-http");
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const server = require('../app');
 const should = chai.should();
-const agent = chai.request.agent(app);
+
 
 chai.should()
 chai.use(chaiHttp);
 
 
 describe('CardSet', function () {
+
+  after(() => {
+    
+  })
     
   it("Should return a collection of cards GET", function() {
-      agent
+      chai.request(server)
       .get("/sets/base")
       .end((err, res) => {
           res.should.have.status(200)

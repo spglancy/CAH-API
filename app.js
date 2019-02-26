@@ -1,14 +1,14 @@
 const express = require('express')
+const config = require('./config')
 const app = express()
-const config = require("./config")
 
 mongoose.connect( config.mongoURL, { useNewUrlParser: true })
-.catch(err =>{
-    throw err;
-})
+  .catch((err) =>{
+    throw err
+  })
 
 app.get('/', (req, res) => {
-    res.json(data.base.black[4])
+  // res.json(data.base.black[4])
 })
 
 // should be last get, will return an error message for requests to routes that do not exist

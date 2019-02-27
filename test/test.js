@@ -12,9 +12,8 @@ chai.use(chaiHttp)
 
 describe('CardSet', function () {
   after(() => {
-    
   })
-     
+
   it('Should return a collection of cards GET', function () {
     chai.request(server)
       .get('/sets/base')
@@ -30,5 +29,4 @@ describe('CardSet', function () {
   it('Should POST card to a proposed card object', function () {
 
   })
-
 })

@@ -14,7 +14,7 @@ describe('CardSet', function () {
   after(() => {
     
   })
-     
+
   it('Should return a collection of cards GET', function () {
     chai.request(server)
       .get('/sets/base')

@@ -14,7 +14,7 @@ describe('CardSet', function () {
   after(() => {
   })
 
-  it('Should return a collection of cards GET', function () {
+  it('Should GET a collection of cards from the base card set', function () {
     chai.request(server)
       .get('/sets/base')
       .end((err, res) => {
@@ -26,7 +26,20 @@ describe('CardSet', function () {
   it('Should GET a collection of X cards from a Y cardset', function () {
 
   })
+
+  it('Should GET a collection of cards from multiple card sets in a list', function () {
+
+  })
+
   it('Should POST card to a proposed card object', function () {
+
+  })
+
+  it('Should PUT a change to a proposed card', function () {
+
+  })
+
+  it('Should DELETE a proposed card from the proposed cards', function () {
 
   })
 })

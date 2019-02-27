@@ -19,16 +19,30 @@ describe('CardSet', function () {
       .get('/sets/base')
       .end((err, res) => {
         res.should.have.status(200)
+        res.should.be.a(JSON)
         done()
       })
   })
 
   it('Should GET a list of the names of all the current card sets', function () {
-    
+    chai.request(server)
+      .get('/sets')
+      .end((err, res) => {
+          res.should.have.status(200)
+          res.should.be.a(Array)
+        done()
+      })
   })
 
   it('Should GET a collection of X cards from a Y cardset', function () {
-
+    chai.request(server)
+      .get('/sets/90s?_n=8')
+      .end((err, res) => {
+          res.should.have.status(200)
+          res.should.be.a(Array)
+          res.length.should.equal(8)
+          done()
+      })
   })
 
   it('Should GET a collection of cards from multiple card sets in a list', function () {

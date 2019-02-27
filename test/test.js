@@ -23,4 +23,7 @@ describe('CardSet', function () {
       })
   })
 
+  it("Should GET a collection of X cards from a Y cardset")
+  it("Should POST card to a proposed card object")
+
 })

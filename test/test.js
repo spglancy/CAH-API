@@ -23,6 +23,10 @@ describe('CardSet', function () {
       })
   })
 
+  it('Should GET a list of the names of all the current card sets', function () {
+    
+  })
+
   it('Should GET a collection of X cards from a Y cardset', function () {
 
   })

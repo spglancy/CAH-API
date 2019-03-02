@@ -12,7 +12,7 @@ If you have not played and/or do not know how to play, we strongly urge you to c
 A black card is a prompt card and will often have a blank spot represented by an underscore in the JSON. Not every set contains black cards and the sets that do contain many more white cards than black cards.
 
 ##### White Cards
-A white card is a responce card, played in response to the black card played. White cards are in every card set, and are very abundent. There are more white cards because at least 2 white cards get played every round while only 1 black card gets played. Players also need to have 10 of these in their hands at a time.
+A white card is a response card, played in after the black card played. White cards are in every card set, and are very abundant. There are more white cards because at least 2 white cards get played every round while only 1 black card gets played. Players also need to have 10 of these in their hands at a time.
 
 ### Endpoints
 

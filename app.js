@@ -9,6 +9,8 @@ const RouteController = require('./controllers/Routes')
 app.use(methodOverride('_method'))
 
 app.use('/', RouteController)
+// app.use('/', authController)
+
 
 mongoose.connect(config.mongoURL, { useNewUrlParser: true })
   .catch((err) => {

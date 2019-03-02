@@ -1,5 +1,6 @@
 /* eslint-disable semi */
-const router = Express.router()
+const express = require('express')
+const router = express.Router()
 const cardSet = require('../models/cardSet')
 
 // GET all cards from selected set
@@ -17,6 +18,7 @@ router.get('/sets/:id', (req, res) => {
 router.get('/sets', (req, res) => {
   cardSet.find()
     .then((sets) => {
+      console.log(sets)
       res.send(sets.setName)
     })
     .catch((err) => {
@@ -71,3 +73,5 @@ router.put('/proposed/:id', (req, res) => {
 router.post('/proposed/:id?method=DELETE', (req, res) => {
   
 })
+
+module.exports = router

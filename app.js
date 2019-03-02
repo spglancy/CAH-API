@@ -6,17 +6,15 @@ const methodOverride = require('method-override')
 const config = require('./config')
 const RouteController = require('./controllers/Routes')
 
-app.use(methodOverride('_method'))
-
-app.use('/', RouteController)
-// app.use('/', authController)
-
-
 mongoose.connect(config.mongoURL, { useNewUrlParser: true })
   .catch((err) => {
     throw err
   })
 
+app.use(methodOverride('_method'))
+
+app.use('/', RouteController)
+// app.use('/', authController)
 // should be last get, will return an error message for requests to routes that do not exist
 app.get('*', (req, res) => {
   res.send({

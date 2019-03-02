@@ -5,7 +5,6 @@
 const chai = require("chai")
 const chaiHttp = require("chai-http")
 const server = require("../app")
-const proposedCard = required("../models/proposedCard")
 
 chai.use(chaiHttp)
 
@@ -64,7 +63,7 @@ describe('CardSet', function () {
 
   it('Should GET a collection of all cards from multiple card sets in a list', function () {
     chai.request(server)
-      .get('/sets/?_sets=90s, Base')
+      .get('/sets/multi?_sets=90s,Base')
       .end((err, res) => {
         if (err) {
           return done(err)

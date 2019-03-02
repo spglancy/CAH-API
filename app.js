@@ -2,6 +2,9 @@ const express = require('express')
 const config = require('./config')
 const mongoose = require('mongoose');
 const app = express()
+const methodOverride = require('method-override')
+
+app.use(methodOverride('_method'))
 
 mongoose.connect( config.mongoURL, { useNewUrlParser: true })
   .catch((err) =>{

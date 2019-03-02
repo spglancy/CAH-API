@@ -2,15 +2,23 @@
 /* eslint-disable func-names */
 /* eslint-disable prefer-arrow-callback */
 /* eslint-disable no-undef */
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const server = require('../app');
+const chai = require("chai")
+const chaiHttp = require("chai-http")
+const server = require("../app")
+const proposedCard = required("../models/proposedCard")
 
-// const should = chai.should()
 chai.use(chaiHttp)
 
 
 describe('CardSet', function () {
+
+  const newCard = {
+    content: "This is a funny card hehexD",
+    user: "apikey",
+  }
+
+  const cardId = ""
+
   after(() => {
   })
 
@@ -18,8 +26,11 @@ describe('CardSet', function () {
     chai.request(server)
       .get('/sets/base')
       .end((err, res) => {
-        res.should.have.status(200)
-        res.should.be.a(JSON)
+        if (err) {
+          return done(err)
+        }
+        expect(res).to.have.status(200)
+        expect(res).to.be.a(JSON)
         done()
       })
   })
@@ -28,8 +39,11 @@ describe('CardSet', function () {
     chai.request(server)
       .get('/sets')
       .end((err, res) => {
-          res.should.have.status(200)
-          res.should.be.a(Array)
+        if (err) {
+          return done(err)
+        }
+          expect(res).to.have.status(200)
+          expect(res).to.be.a(Array)
         done()
       })
   })
@@ -38,26 +52,55 @@ describe('CardSet', function () {
     chai.request(server)
       .get('/sets/90s?_n=8')
       .end((err, res) => {
-          res.should.have.status(200)
-          res.should.be.a(Array)
-          res.length.should.equal(8)
-          done()
+        if (err) {
+          return done(err)
+        }
+        expect(res).to.have.status(200)
+        expect(res).to.be.a(Array)
+        expect(res.length).to.equal(8)
+        done()
       })
   })
 
-  it('Should GET a collection of cards from multiple card sets in a list', function () {
-
+  it('Should GET a collection of all cards from multiple card sets in a list', function () {
+    chai.request(server)
+      .get('/sets/?_sets=90s, Base')
+      .end((err, res) => {
+        if (err) {
+          return done(err)
+        }
+        expect(res).to.have.status(200)
+        expect(res).to.be.a(JSON)
+        done()
+      })
   })
 
   it('Should POST card to a proposed card object', function () {
-
+    chai.request(server)
+    .post('/proposed/new')
+    .set("content-type", "application/x-www-form-urlencoded")
+    .send(newPost)
+    .end((err, res) => {
+      expect(res).to.have.status(200)
+      cardId = res.cardId
+      done()
+    })
   })
 
   it('Should PUT a change to a proposed card', function () {
-
+    newCard.content = "this is a differect card lmao"
+    chai.request(server)
+    .put(`/proposed/${cardId}`)
+    .end((err, res) => {
+        expect(res).to.have.status(200)
+    })
   })
 
   it('Should DELETE a proposed card from the proposed cards', function () {
-
+    chai.request(server)
+    .delete(`/proposed/${cardId}?method=DELETE`)
+    .end((err, res) => {
+        
+    })
   })
 })

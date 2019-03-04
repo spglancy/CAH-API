@@ -32,6 +32,8 @@ router.get('/sets/:id', (req, res) => {
         for (let i = 0; i < n; i += 1) {
           const cardIndex = Math.floor(Math.random() * whites.length)
           cards.push(whites[cardIndex])
+          console.log(whites, whites[cardIndex])
+
           whites.splice(cardIndex, 1)
         }
         console.log(whites.length)

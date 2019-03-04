@@ -9,24 +9,50 @@ If you have not played and/or do not know how to play, we strongly urge you to c
 ### Card Types
 
 ##### Black Cards
-A black card is a prompt card and will often have a blank spot represented by an underscore in the JSON. Not every set contains black cards and the sets that do contain many more white cards than black cards.
+A black card is a prompt card and will often have a blank spot represented by an underscore in the JSON. Not every set contains black cards and the sets that do contain many more white cards than black cards. 
+Often a black card will require 2 white cards instead of just one, because of this, they are stored in the database as an object with their card `text` and how many you need to `pick`   
+```json
+{'text': 'why can't I sleep at night?', 'pick': 1}
+```
 
 ##### White Cards
-A white card is a response card, played in after the black card played. White cards are in every card set, and are very abundant. There are more white cards because at least 2 white cards get played every round while only 1 black card gets played. Players also need to have 10 of these in their hands at a time.
+A white card is a response card, played in after the black card played. White cards are in every card set and are very abundant. There are more white cards because at least 2 white cards get played every round while only 1 black card gets played. Players also need to have 10 of these in their hands at a time.  
+White cards are stored in the database simply as a string  
+```'Being fabulous.'```
 
 ### Endpoints
 
 ##### GET
-* __'/sets'__ - gives you a list of all the different card sets
-* __'/sets/:set'__ - gives you the data of just one card set
-* __'/sets/multi?\_sets=[set1],[set3],[set3]...'__ - gives you all the cards from multiple sets
+* __'/sets'__ - gives you a list of all the different card sets   
+```json 
+{cardsets: ["Base","90s","Box","Canadian" ...]}
+```
+* __'/sets/:set'__ - gives you the data of just one card set  
+ ```json
+ {
+   'setName': 'Base',
+   'blackCards': [{'text': "Why can't I sleep at night?", 'pick': 1}, {'text': "I got 99 problems but _ ain't one.", 'pick': 1} ...],
+   'whiteCards': ['Coat hanger abortions.', 'Man meat.', 'Autocannibalism.' ...]
+   }
+ ```
+* __'/sets/multi?\_sets=[set1],[set3],[set3]...'__ - gives you all the cards from multiple sets  
+```json
+{[
+  {'setName': 'Base', 'blackCards': [...], 'whiteCards': [...]},
+  {'setName': '90s', 'blackCards': [...], 'whiteCards': [...]}
+   ...
+]}
+```
 * __'/sets/:set?\_n=[numcards]'__ - gives you a [numcards] random white cards from a given set  
+```json
+{cards: ['Coat hanger abortions.', 'Man meat.', 'Autocannibalism.']}
+```
 
 ##### POST
 * __'/proposed/new'__ - creates a new proposal card
 
 ##### PUT
-* __'/proposed/:id'__ - puts changes to a proposed c ard
+* __'/proposed/:id'__ - puts changes to a proposed card
 
 ##### DELETE
 * __'/proposed/:id?_method=DELETE'__ - removes a proposed card

@@ -1,8 +1,10 @@
 /* eslint-disable semi */
 const express = require('express')
 const mongoose = require('mongoose')
+
 const app = express()
 const methodOverride = require('method-override')
+const bodyParser = require('body-parser')
 const config = require('./config')
 const RouteController = require('./controllers/Routes')
 
@@ -10,8 +12,10 @@ mongoose.connect(config.mongoURL, { useNewUrlParser: true })
   .catch((err) => {
     throw err
   })
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/CAH-API');
 
 app.use(methodOverride('_method'))
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/', RouteController)
 // app.use('/', authController)

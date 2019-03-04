@@ -1,7 +1,11 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable semi */
 const express = require('express')
+
 const router = express.Router()
 const cardSet = require('../models/cardSet')
+const ProposedCard = require('../models/proposedCard')
 
 // GET all cards from selected set
 router.get('/sets/:id', (req, res) => {
@@ -13,6 +17,17 @@ router.get('/sets/:id', (req, res) => {
       throw err
     })
 })
+
+// router.post('/sets/new', (req, res) => {
+//   const set = new cardSet()
+//   set.setName = 'help1'
+//   set.blackCards = [{ text: 'help', pick: 1 }]
+//   set.whiteCards = ['help']
+//   set.save()
+//     .then((set) => {
+//       res.send(set._id)
+//     })
+// })
 
 // GET a list of cardSets
 router.get('/sets', (req, res) => {
@@ -61,7 +76,13 @@ router.get('/sets/multi', (req, res) => {
 
 // POSTing proposed card to db
 router.post('/proposed/new', (req, res) => {
-  
+  console.log(req.body)
+  const card = new ProposedCard(req.body)
+
+  card.save()
+    .then((c) => {
+      res.send(c._id)
+    })
 })
 
 // PUT editing the data of a proposed card

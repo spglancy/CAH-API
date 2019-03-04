@@ -3,8 +3,8 @@ const Schema = mongoose.Schema
 
 const cardSetSchema = new Schema({
   setName: String,
-  blackCards: Object,
-  whiteCards: Object,
+  blackCards: Array,
+  whiteCards: Array,
 })
 
 module.exports = mongoose.model("cardSet", cardSetSchema)

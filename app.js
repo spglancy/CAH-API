@@ -7,13 +7,14 @@ const methodOverride = require('method-override')
 const bodyParser = require('body-parser')
 const config = require('./config')
 const RouteController = require('./controllers/Routes')
+const cors = require('cors')
 
 mongoose.connect(config.mongoURL, { useNewUrlParser: true })
   .catch((err) => {
     throw err
   })
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/CAH-API');
-
+  
+app.use('cors')
 app.use(bodyParser.json({ limit: '50mb' }))
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
 app.use(methodOverride('_method'))

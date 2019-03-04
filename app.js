@@ -5,16 +5,16 @@ const mongoose = require('mongoose')
 const app = express()
 const methodOverride = require('method-override')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 const config = require('./config')
 const RouteController = require('./controllers/Routes')
-const cors = require('cors')
 
 mongoose.connect(config.mongoURL, { useNewUrlParser: true })
   .catch((err) => {
     throw err
   })
-  
-app.use('cors')
+
+app.use(cors())
 app.use(bodyParser.json({ limit: '50mb' }))
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
 app.use(methodOverride('_method'))

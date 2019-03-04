@@ -4,7 +4,6 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/user.js')
 const jwt = require('jsonwebtoken')
-const Data = require('../models/data')
 
 // checks user auth and logs in
 router.post('/login', (req, res) => {

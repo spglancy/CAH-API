@@ -1,4 +1,5 @@
-const mongoose = require("mongoose")
+/* eslint-disable semi */
+const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const cardSetSchema = new Schema({
@@ -7,4 +8,4 @@ const cardSetSchema = new Schema({
   whiteCards: Object,
 })
 
-module.exports = mongoose.model("cardSet", cardSetSchema)
+module.exports = mongoose.model('cardSet', cardSetSchema)

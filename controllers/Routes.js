@@ -2,6 +2,7 @@
 const express = require('express')
 const router = express.Router()
 const cardSet = require('../models/cardSet')
+const proposedCard = require('../models/proposedCard')
 
 // GET all cards from selected set
 router.get('/sets/:id', (req, res) => {
@@ -16,13 +17,17 @@ router.get('/sets/:id', (req, res) => {
 
 // GET a list of cardSets
 router.get('/sets', (req, res) => {
+  const output = []
   cardSet.find()
     .then((sets) => {
-      console.log(sets)
-      res.send(sets.setName)
+      sets.map(({ setName }) => {
+        return output.push(setName)
+      })
+      console.log(output)
+      res.send(output)
     })
     .catch((err) => {
-      throw err
+      console.log(err)
     })
 })
 
@@ -32,12 +37,12 @@ router.get('/sets/:id', (req, res) => {
   cardSet.find({ setName: req.params.id })
     .then((set) => {
       const collection = []
-      for (let i = 0; i <= n; i += 1) {
+      let i = 0
+      while (i < n) {
         const index = Math.floor(Math.random() * set.whiteCards.length)
         if (!(collection.includes(set.whiteCards[index]))) {
           collection.append(set.whiteCards[index])
-        } else {
-          i -= 1
+          i += 1
         }
       }
       res.send(collection)
@@ -61,12 +66,18 @@ router.get('/sets/multi', (req, res) => {
 
 // POSTing proposed card to db
 router.post('/proposed/new', (req, res) => {
-  
+  proposedCard.create(req.body)
+    .then((card) => {
+      res.send({ cardId: card._id})
+    })
+    .catch((err) => {
+      throw err
+    })
 })
 
 // PUT editing the data of a proposed card
 router.put('/proposed/:id', (req, res) => {
-  
+  proposedCard.findByIdAndUpdate(req.params.id, req.body)
 })
 
 // DELETE a proposed card

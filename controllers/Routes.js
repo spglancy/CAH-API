@@ -35,10 +35,9 @@ router.get('/sets', (req, res) => {
   cardSet.find()
     .then((sets) => {
       sets.map(({ setName }) => {
-        return output.push(setName)
+        return output.push({ setName })
       })
-      console.log(output)
-      res.send(output)
+      res.json(output)
     })
     .catch((err) => {
       console.log(err)
@@ -69,6 +68,7 @@ router.get('/sets/:id', (req, res) => {
 // GET all cards from multiple sets query is ?_sets=[set1],[set2]
 router.get('/sets/multi', (req, res) => {
   const { sets } = req.query
+  console.log(req.query);
   cardSet.find({ setName: sets })
     .then((obj) => {
       res.json(obj)

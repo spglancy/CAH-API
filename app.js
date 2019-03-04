@@ -1,15 +1,9 @@
 /* eslint-disable semi */
 const express = require('express')
-<<<<<<< HEAD
-const app = express()
-const methodOverride = require('method-override')
-const mongoose = require('mongoose')
-=======
 const mongoose = require('mongoose')
 
 const app = express()
 const methodOverride = require('method-override')
->>>>>>> 3bcdfad0a751d4bfd050a3ceb1af9affd0b46534
 const bodyParser = require('body-parser')
 const config = require('./config')
 const RouteController = require('./controllers/Routes')

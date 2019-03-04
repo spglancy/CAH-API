@@ -5,11 +5,7 @@ const express = require('express')
 
 const router = express.Router()
 const cardSet = require('../models/cardSet')
-<<<<<<< HEAD
-const proposedCard = require('../models/proposedCard')
-=======
 const ProposedCard = require('../models/proposedCard')
->>>>>>> 3bcdfad0a751d4bfd050a3ceb1af9affd0b46534
 
 // GET all cards from selected set
 router.get('/sets/:id', (req, res) => {
@@ -84,21 +80,12 @@ router.get('/sets/multi', (req, res) => {
 
 // POSTing proposed card to db
 router.post('/proposed/new', (req, res) => {
-<<<<<<< HEAD
-  proposedCard.create(req.body)
-    .then((card) => {
-      res.send({ cardId: card._id})
-    })
-    .catch((err) => {
-      throw err
-=======
   console.log(req.body)
   const card = new ProposedCard(req.body)
 
   card.save()
     .then((c) => {
       res.send(c._id)
->>>>>>> 3bcdfad0a751d4bfd050a3ceb1af9affd0b46534
     })
 })
 

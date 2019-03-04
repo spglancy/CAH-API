@@ -9,10 +9,11 @@ const cors = require('cors')
 const config = require('./config')
 const RouteController = require('./controllers/Routes')
 
-mongoose.connect(config.mongoURL, { useNewUrlParser: true })
-  .catch((err) => {
-    throw err
-  })
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/CAH-API');
+// mongoose.connect(config.mongoURL, { useNewUrlParser: true })
+//   .catch((err) => {
+//     throw err
+//   })
 
 app.use(cors())
 app.use(bodyParser.json({ limit: '50mb' }))

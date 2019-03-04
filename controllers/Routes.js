@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable no-shadow */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable semi */
@@ -28,15 +29,12 @@ router.get('/sets/:id', (req, res) => {
       if (n) {
         const whites = set.whiteCards
         const cards = []
-        console.log(whites.length)
         for (let i = 0; i < n; i += 1) {
           const cardIndex = Math.floor(Math.random() * whites.length)
           cards.push(whites[cardIndex])
-          console.log(whites, whites[cardIndex])
 
           whites.splice(cardIndex, 1)
         }
-        console.log(whites.length)
         
         res.send(cards)
       } else {
@@ -74,11 +72,14 @@ router.get('/sets', (req, res) => {
     })
 })
 
+router.get('/proposed', (req, res) => {
+  ProposedCard.find().then((cards) => { res.send(cards) })
+})
+
 // POSTing proposed card to db
 router.post('/proposed/new', (req, res) => {
   console.log(req.body)
   const card = new ProposedCard(req.body)
-
   card.save()
     .then((c) => {
       res.send(c._id)
@@ -87,12 +88,12 @@ router.post('/proposed/new', (req, res) => {
 
 // PUT editing the data of a proposed card
 router.put('/proposed/:id', (req, res) => {
-  proposedCard.findByIdAndUpdate(req.params.id, req.body)
+  ProposedCard.findByIdAndUpdate(req.params.id, req.body).then((post) => { res.send(post._id) })
 })
 
 // DELETE a proposed card
-router.post('/proposed/:id?method=DELETE', (req, res) => {
-  
+router.delete('/proposed/:id', (req, res) => {
+  ProposedCard.findByIdAndDelete(req.params.id).then(res.json({ status: 200 }))
 })
 
 module.exports = router

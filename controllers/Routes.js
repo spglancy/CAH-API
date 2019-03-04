@@ -7,11 +7,39 @@ const router = express.Router()
 const cardSet = require('../models/cardSet')
 const ProposedCard = require('../models/proposedCard')
 
+// GET all cards from multiple sets query is ?_sets=[set1],[set2]
+router.get('/sets/multi', (req, res) => {
+  const { sets } = req.query
+  const setsList = sets.split(',')
+  cardSet.find({ setName: setsList })
+    .then((obj) => {
+      res.json(obj)
+    })
+    .catch((err) => {
+      throw err
+    })
+})
+
 // GET all cards from selected set
 router.get('/sets/:id', (req, res) => {
-  cardSet.find({ setName: req.params.id })
+  const { n } = req.query
+  cardSet.findOne({ setName: req.params.id })
     .then((set) => {
-      res.json(set)
+      if (n) {
+        const whites = set.whiteCards
+        const cards = []
+        console.log(whites.length)
+        for (let i = 0; i < n; i += 1) {
+          const cardIndex = Math.floor(Math.random() * whites.length)
+          cards.push(whites[cardIndex])
+          whites.splice(cardIndex, 1)
+        }
+        console.log(whites.length)
+        
+        res.send(cards)
+      } else {
+        res.json(set)
+      }
     })
     .catch((err) => {
       throw err
@@ -41,40 +69,6 @@ router.get('/sets', (req, res) => {
     })
     .catch((err) => {
       console.log(err)
-    })
-})
-
-// GET a certain amount of cards from selected set query is ?_n=numcards
-router.get('/sets/:id', (req, res) => {
-  const { n } = req.query
-  cardSet.find({ setName: req.params.id })
-    .then((set) => {
-      const collection = []
-      let i = 0
-      while (i < n) {
-        const index = Math.floor(Math.random() * set.whiteCards.length)
-        if (!(collection.includes(set.whiteCards[index]))) {
-          collection.append(set.whiteCards[index])
-          i += 1
-        }
-      }
-      res.send(collection)
-    })
-    .catch((err) => {
-      throw err
-    })
-})
-
-// GET all cards from multiple sets query is ?_sets=[set1],[set2]
-router.get('/sets/multi', (req, res) => {
-  const { sets } = req.query
-  console.log(req.query);
-  cardSet.find({ setName: sets })
-    .then((obj) => {
-      res.json(obj)
-    })
-    .catch((err) => {
-      throw err
     })
 })
 

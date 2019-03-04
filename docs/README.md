@@ -35,7 +35,7 @@ White cards are stored in the database simply as a string
    'whiteCards': ['Coat hanger abortions.', 'Man meat.', 'Autocannibalism.' ...]
    }
  ```
-* __'/sets/multi?\_sets=[set1],[set3],[set3]...'__ - gives you all the cards from multiple sets  
+* __'/sets/multi?sets=[set1],[set3],[set3]...'__ - gives you all the cards from multiple sets  
 ```json
 {[
   {'setName': 'Base', 'blackCards': [...], 'whiteCards': [...]},
@@ -43,7 +43,7 @@ White cards are stored in the database simply as a string
    ...
 ]}
 ```
-* __'/sets/:set?\_n=[numcards]'__ - gives you a [numcards] random white cards from a given set  
+* __'/sets/:set?n=[numcards]'__ - gives you a [numcards] random white cards from a given set  
 ```json
 {cards: ['Coat hanger abortions.', 'Man meat.', 'Autocannibalism.']}
 ```

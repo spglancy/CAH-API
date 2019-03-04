@@ -65,7 +65,6 @@ router.get('/sets', (req, res) => {
       sets.map(({ setName }) => {
         return output.push({ setName })
       })
-      res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001')
       res.json(output)
     })
     .catch((err) => {

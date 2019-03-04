@@ -17,7 +17,7 @@ mongoose.connect(config.mongoURL, { useNewUrlParser: true })
     throw err
   })
 
-app.use(cors())
+app.use(cors({ origin: 'https://cards-against-humanity-api.herokuapp.com' }))
 app.use(bodyParser.json({ limit: '50mb' }))
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
 app.use(methodOverride('_method'))

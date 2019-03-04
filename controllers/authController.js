@@ -6,17 +6,9 @@ const User = require('../models/user.js')
 const jwt = require('jsonwebtoken')
 const Data = require('../models/data')
 
-router.post('/data', (req, res) => {
-  const data = new Data(req.body)
-  data.save().then((d) => {
-    res.json(d)
-  }).catch((err) => {
-    res.send(err)
-  })
-})
-
 // checks user auth and logs in
 router.post('/login', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*')
   const email = req.body.email.toLowerCase()
   const password = req.body.password
   // Find this user name
@@ -52,6 +44,7 @@ router.post('/login', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*')
   const { email, pwd, pwdconf } = req.body
   if (pwd === pwdconf) {
     const user = new User(req.body)

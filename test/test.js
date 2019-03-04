@@ -16,7 +16,7 @@ describe('CardSet', function () {
     user: 'apikey',
   }
 
-  const cardId = ''
+  const cardId = 'cardid'
 
   after(() => {
   })
@@ -49,7 +49,7 @@ describe('CardSet', function () {
 
   it('Should GET a collection of X cards from a Y cardset', function () {
     chai.request(server)
-      .get('/sets/90s?_n=8')
+      .get('/sets/90s?n=8')
       .end((err, res) => {
         if (err) {
           return done(err)
@@ -63,7 +63,7 @@ describe('CardSet', function () {
 
   it('Should GET a collection of all cards from multiple card sets in a list', function () {
     chai.request(server)
-      .get('/sets/multi?_sets=90s,Base')
+      .get('/sets/multi?sets=90s,Base')
       .end((err, res) => {
         if (err) {
           return done(err)

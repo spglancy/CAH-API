@@ -35,7 +35,7 @@ router.get('/sets/:id', (req, res) => {
 
           whites.splice(cardIndex, 1)
         }
-        
+
         res.send(cards)
       } else {
         res.json(set)

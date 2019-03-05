@@ -2,9 +2,9 @@
 /* eslint-disable semi */
 const express = require('express')
 const router = express.Router()
-const User = require('../models/user.js')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
+const User = require('../models/user.js')
 
 // checks user auth and logs in
 router.post('/login', (req, res) => {

@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable semi */
+const dotenv = require('dotenv').config()
 const express = require('express')
 const router = express.Router()
 const jwt = require('jsonwebtoken')
@@ -29,6 +30,7 @@ router.post('/login', (req, res) => {
             message: 'Wrong Email or Password',
           })
         }
+        console.log(process.env.SECRET)
         const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: '60 days' })
         return res.status(200).json({
           result: 'Success',

@@ -1,6 +1,4 @@
 /* eslint-disable semi */
-// dotenv pls work
-const dotenv = require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const app = express()

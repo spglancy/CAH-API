@@ -43,20 +43,20 @@ router.post('/login', (req, res) => {
 
 router.post('/register', (req, res) => {
   const { email, pwd, pwdconf } = req.body
+  let user = {}
   if (pwd === pwdconf) {
-    const user = new User(req.body)
+    user = new User(req.body)
   } else {
     return res.send({ message: 'Passwords do not match' })
   }
   user.email = user.email.toLowerCase()
   User.findOne({ email }).then((check) => {
     if (!check) {
-      user.save().then((user) => {
-        // creating token for web based clients
-        const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: '60 days' })
+      user.save().then((u) => {
+        const token = jwt.sign({ _id: u._id }, process.env.SECRET, { expiresIn: '60 days' })
         res.json({
           result: 'Success',
-          userId: user._id,
+          userId: u._id,
           token,
         })
       })

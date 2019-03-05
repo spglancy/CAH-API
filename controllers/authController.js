@@ -21,6 +21,7 @@ router.post('/login', (req, res) => {
         })
       }
       // Check the password
+      // not working for some reason
       user.comparePassword(password, (err, isMatch) => {
         if (!isMatch) {
           // Password does not match

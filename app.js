@@ -1,5 +1,5 @@
 /* eslint-disable semi */
-const dotenv = require('dotenv').config()
+// const dotenv = require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
@@ -8,7 +8,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const config = require('./config')
 const RouteController = require('./controllers/Routes')
-const authController = require('./controllers/authController')
+// const authController = require('./controllers/authController')
 
 // mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/CAH-API');
 
@@ -24,7 +24,7 @@ app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/', RouteController)
-app.use('/', authController)
+// app.use('/', authController)
 
 // should be last get, will return an error message for requests to routes that do not exist
 app.get('*', (req, res) => {

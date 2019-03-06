@@ -6,6 +6,7 @@ const chai = require('chai')
 const chaiHttp = require('chai-http')
 const server = require('../app')
 
+const expect = chai.expect
 chai.use(chaiHttp)
 
 
@@ -16,7 +17,7 @@ describe('CardSet', function () {
     user: 'apikey',
   }
 
-  const cardId = 'cardid'
+  let cardId = 'cardid'
 
   after(() => {
   })
@@ -81,7 +82,7 @@ describe('CardSet', function () {
       .send(newCard)
       .end((err, res) => {
         expect(res).to.have.status(200)
-        cardId = res.cardId
+        cardId = res
         done()
       })
   })
@@ -92,7 +93,6 @@ describe('CardSet', function () {
       .put(`/proposed/${cardId}`)
       .send(newCard)
       .set('content-type', 'application/x-www-form-urlencoded')
-
       .end((err, res) => {
         expect(res).to.have.status(200)
       })
@@ -100,9 +100,8 @@ describe('CardSet', function () {
 
   it('Should DELETE a proposed card from the proposed cards', function () {
     chai.request(server)
-    .delete(`/proposed/${cardId}?method=DELETE`)
-    .end((err, res) => {
-        
-    })
+      .delete(`/proposed/${cardId}?method=DELETE`)
+      .end((err, res) => {
+      })
   })
 })

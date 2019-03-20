@@ -1,4 +1,6 @@
 # Cards Against Humanity API
+### Base URL
+This API can be accessed at https://cards-against-humanity-api.herokuapp.com/
 ### Overview
 The Cards Against Humanity API allows a user to get raw JSON data of the entire card base of the card game [Cards Against Humanity][cah], as well as propose new cards to just the API.
 

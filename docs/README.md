@@ -41,8 +41,8 @@ White cards are stored in the database simply as a string
 ```json
 {[
   {"setName": "Base", "blackCards": ["..."], "whiteCards": ["..."]},
-  {"setName": "90s", "blackCards": ["..."], "whiteCards": ["..."]}
-   ...
+  {"setName": "90s", "blackCards": ["..."], "whiteCards": ["..."]},
+   "..."
 ]}
 ```
 * __'/sets/:set?n=[numcards]'__ - gives you a [numcards] random white cards from a given set  

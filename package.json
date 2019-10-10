@@ -17,7 +17,8 @@
         "mocha": "^6.0.2",
         "mongoose": "^5.4.16",
         "prop-types": "^15.7.2",
-        "react-cookie": "^3.0.8"
+        "react-cookie": "^3.0.8",
+        "uuid": "^3.3.3"
     },
     "devDependencies": {
         "eslint": "^5.14.1",

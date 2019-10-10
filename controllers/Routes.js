@@ -6,7 +6,6 @@ const express = require('express');
 
 const router = express.Router();
 const cardSet = require('../models/cardSet');
-const apiKey = require('../models/apiKey');
 const user = require('../models/user');
 
 // GET all cards from multiple sets query is ?_sets=[set1],[set2]

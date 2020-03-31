@@ -63,11 +63,11 @@ White cards are stored in the database simply as a string
 Again, you would get a much better grasp of the rules by actually playing [the game][cah].
 That being said, the game is incredibly simple and played just like Apples to Apples.   
 
-The game is played with 3 or more players, you decide on one random "Card Psar" who then deals 10 white cards to each player including themselves. Then turns over one black card.  
+The game is played with 3 or more players, you decide on one random "Card Czar" who then deals 10 white cards to each player including themselves. Then turns over one black card.  
 
-Everyone except for the Card Psar puts a white card face down in the center when everyone has played, the Card Psar flips all of the white cards over and reads them out. Then the Card Psar decides on which white card goes with the black card the best, or is the funniest.  
+Everyone except for the Card Czar puts a white card face down in the center when everyone has played, the Card Czar flips all of the white cards over and reads them out. Then the Card Czar decides on which white card goes with the black card the best, or is the funniest.  
 
-The player who played that white card then gets the black card, all the white cards go to the bottom of the deck, and the next player counter-clockwise is the new Card Psar. Everyone then draws white cards until they get back to 10.
+The player who played that white card then gets the black card, all the white cards go to the bottom of the deck, and the next player counter-clockwise is the new Card Czar. Everyone then draws white cards until they get back to 10.
 
 This keeps going until one player gets to an agreed
 upon final number of black cards.

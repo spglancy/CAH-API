@@ -1,5 +1,5 @@
 /* eslint-disable semi */
-// const dotenv = require('dotenv').config()
+require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 
@@ -11,9 +11,10 @@ const config = require('./config');
 const RouteController = require('./controllers/Routes');
 const AuthController = require('./controllers/AuthController');
 
-mongoose.connect(config.mongoURL, { useNewUrlParser: true }).catch((err) => {
-  throw err;
-});
+mongoose.connect(config.mongoURL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .catch((err) => {
+    throw err;
+  });
 
 app.use(cors());
 app.use(bodyParser.json({ limit: '50mb' }));
@@ -24,14 +25,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', RouteController);
 app.use('/', AuthController);
 
-// should be last get, will return an error message for requests to routes that do not exist
 app.get('*', (req, res) => {
-  res.send(
+  res.status(404).send(
     {
       message: 'This endpoint does not exist',
-      error: 404,
     },
-    404,
   );
 });
 

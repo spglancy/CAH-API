@@ -50,15 +50,6 @@ White cards are stored in the database simply as a string
 {"cards": ["Coat hanger abortions.", "Man meat.", "Autocannibalism."]}
 ```
 
-##### POST
-* __'/proposed/new'__ - creates a new proposal card
-
-##### PUT
-* __'/proposed/:id'__ - puts changes to a proposed card
-
-##### DELETE
-* __'/proposed/:id?_method=DELETE'__ - removes a proposed card
-
 ### Cards Against Humanity Rules
 Again, you would get a much better grasp of the rules by actually playing [the game][cah].
 That being said, the game is incredibly simple and played just like Apples to Apples.   

@@ -106,30 +106,4 @@ router.get('/sets', (req, res) => {
   });
 });
 
-// router.get('/proposed', (req, res) => {
-//   ProposedCard.find().then((cards) => {
-//     res.send(cards);
-//   });
-// });
-
-// // POSTing proposed card to db
-// router.post('/proposed/new', (req, res) => {
-//   const card = new ProposedCard(req.body);
-//   card.save().then((c) => {
-//     res.send(c._id);
-//   });
-// });
-
-// // PUT editing the data of a proposed card
-// router.put('/proposed/:id', (req, res) => {
-//   ProposedCard.findByIdAndUpdate(req.params.id, req.body).then((post) => {
-//     res.send(post._id);
-//   });
-// });
-
-// // DELETE a proposed card
-// router.delete('/proposed/:id', (req, res) => {
-//   ProposedCard.findByIdAndDelete(req.params.id).then(res.json({ status: 200 }));
-// });
-
 module.exports = router;
